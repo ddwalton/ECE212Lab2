@@ -20,8 +20,7 @@ DEFINE:
 .equ iri, 0x20001010; //Indexed Register Indirect
 .equ piri, 0x20001014; //Post increment Register Indirect
 
-ldr r0, =sizeOfArray;
-ldr r0, [r0];
+ 
 ldr r1, =firstArray;
 ldr r1, [r1];
 ldr r2, =secondArray;
