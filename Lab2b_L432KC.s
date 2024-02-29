@@ -40,7 +40,7 @@ add r5, r6, r7; // r5 <- y[i] + y[i+1]
 
 DETERMINE:
 cmp r4, #1; // if deltaX == 1: A = (y[i]+y[i+1]) / 2
-addeq.w r8, r5, asr #1; // divide by 2 and add to area sum
+addeq.w r8, r5, lsr #1; // divide by 2 and add to area sum
 cmp r4, #4; // if deltaX == 4: A = (y[i]+y[i+1]) * 2
 addeq.w r8, r5, lsl #1; // multiply by 2 and add to area sum
 
