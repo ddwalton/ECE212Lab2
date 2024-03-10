@@ -22,15 +22,15 @@ LOAD:
 ldr r0, =pointAddress;
 ldr r0, [r0]; // number of points
 ldr r1, =xAddress;
-ldr r1, [r1]; // x values
+ldr r1, [r1]; // x value addresses
 ldr r2, =yAddress;
-ldr r2, [r2]; // y values
+ldr r2, [r2]; // y values addresses
 ldr r3,=outAddress;
 ldr r3, [r3]; // out address
 
 mov.w r8, #0; // stores total area
 
-LOOP: // for (; numOfPoints > 2; --numOfPoints)
+LOOP: // for (; numOfPoints > 1; --numOfPoints)
 ldr r4, [r1], #4; // x[i]
 ldr r5, [r1]; // x[i+1]
 sub r4, r5, r4; // r4 <- x[i+1] - x[i] = deltaX = {1, 2, 4}
@@ -47,12 +47,11 @@ cmp r4, #4; // if deltaX == 4: A = (y[i]+y[i+1]) * 2
 IT eq
 lsleq r5, #2; // multiply by 4 and add to area sum
 
-
 add.w r8, r5; // if deltaX == 1: A = y[i] + y[i+1]
 
 RESET:
-cmp r0, #2;
 sub r0, #1;
+cmp r0, #1;
 bhi LOOP;
 
 EXIT:
